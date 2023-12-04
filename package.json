@@ -21,11 +21,10 @@
   "dependencies": {
     "grunt": "^1.6.1",
     "grunt-cli": "^1.4.3",
-    "grunt-webfonts": "^4.0.3",
+    "grunt-webfonts": "^5.0.0",
     "load-grunt-tasks": "^5.1.0",
-    "rmdir": "^1.2.0",
     "unzipper": "^0.10.14",
-    "xml2js": "^0.6.0",
+    "xml2js": "^0.6.2",
     "xmlbuilder": "^15.1.1"
   },
   "keywords": [
@@ -36,7 +35,7 @@
   ],
   "homepage": "https://github.com/mozilla/twemoji-colr#readme",
   "devDependencies": {
-    "emojibase-data": "^15.0.0",
+    "emojibase-data": "^15.3.0",
     "resemblejs": "^5.0.0"
   },
   "scripts": {
