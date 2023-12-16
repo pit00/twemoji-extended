@@ -10,16 +10,18 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install dependencies, build font, and then set current date and time as env variable
-      id: build
-      run: |
-        sudo apt -y update && sudo apt -y purge firefox && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y install fonttools fontforge python3-fontforge
-        cd "$GITHUB_WORKSPACE"
-        npm install && make
-        echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+    - name: Install dependencies
+      run: sudo apt -y update && sudo apt -y install fonttools fontforge python3-fontforge
+
+    - name: Build font
+      run: cd "$GITHUB_WORKSPACE" && npm install && make
+
+    - name: Set current date and time as env variable
+      id: scdntaev
+      run: echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
 
     - name: Archive artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: twemojicolr_win98sefork-${{steps.build.outputs.date}}
+        name: twemojicolr_win98sefork-${{steps.scdntaev.outputs.date}}
         path: ${{github.workspace}}/build/Twemoji Mozilla.ttf
